@@ -7,6 +7,8 @@ const str_outPath = "README.md";
 // TODO: Create an array of questions for user input
 const hashArrHash_questions = [
     {"varName": "str_gitUserName", "question":"Enter GitHub username? ","type": "input"},
+    {"varName": "str_email", "question":"Enter email? ","type": "input"},
+    {"varName": "str_repoName", "question":"Enter GitHub Repo Name? ","type": "input"},
     {"varName":"str_projectTitle", "question": "Enter your project title? ","type": "input"},
     {"varName":"str_projectDescrip", "question":"Enter Project Description? ","type": "input"},
     {"varName":"str_installInstruct", "question":"Enter Installation Instructions? ","type": "input"},
@@ -90,39 +92,55 @@ const func_writeAnswersFile = fileContent => {
 const func_generateReadMe = ParamHash_answers => {
   const str_projectTitle = `# ${ParamHash_answers.str_projectTitle} \n`
   const str_desc = `# Description \n\n ${ParamHash_answers.str_projectDescrip} \n`
-  const str_tableContents = `
-  ## Table of Contents \n
+  const str_tableContents = `\n ## Table of Contents \n
   * [Installation](#installation)
   * [Usage](#usage)
   * [Credits](#credits)
+  * [Questions](#questions)
   * [License](#license) \n`
   
+  let str_licenseBadge = ''
+  let str_license = ParamHash_answers.str_license
   let str_licenseUrl = ''
-  const str_license = ParamHash_answers.str_license
   //'Apache', 'BSD', 'GNU', 'MIT'
   switch(str_license){
     case'Apache':
-      str_licenseUrl = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+      str_licenseBadge = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
+      str_licenseUrl = 'https://opensource.org/licenses/Apache-2.0'
       break;
     case'BSD':
-      str_licenseUrl = '[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)'
+      str_licenseBadge = '[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)'
+      str_licenseUrl = 'https://opensource.org/licenses/BSD-3-Clause'
       break;
     case'GNU':
-      str_licenseUrl = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+      str_licenseBadge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+      str_licenseUrl = 'https://www.gnu.org/licenses/gpl-3.0'
       break;
     case'MIT':
-      str_licenseUrl = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
-  }
-  str_licenseUrl += '\n'
-
-  
+      str_licenseUrl = 'https://opensource.org/licenses/MIT'  
+      str_licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
+      break;
+    }
+  str_licenseBadge += '\n'
+  str_license = `\n # License \n ${ParamHash_answers.str_projectTitle} is [${str_license}](${str_licenseUrl}) Licensed. \n`
 
   let str_installation = `# Installation \n ${ParamHash_answers.str_installInstruct} \n`
 
+  const str_repoName = ParamHash_answers.str_repoName
+  const str_gitUserName = ParamHash_answers.str_gitUserName
+  
+  const str_gitHubLinks = `<ul><li><a href="https://github.com/${str_gitUserName}/${str_repoName}.git">Code on GitHub</a> </li>
+  <li><a href="https://${str_gitUserName}.github.io/${str_repoName}/">Demo of Deployed Project</a></li>
+  <li>Clone the projecct here: git@github.com:${str_gitUserName}/${str_repoName}.git </li></ul> \n `
 
+  const str_email = ParamHash_answers.str_email
+  const str_questions = `# Questions \n If you have questions please reach out to use at ${str_email} . \n `
 
-  const str_hr = '<hr>'
-  const str_writeToFile = str_projectTitle +str_licenseUrl+ str_desc +str_hr+ str_tableContents + str_installation
+  let str_usageInstruct = ParamHash_answers.str_usageInstruct
+  str_usageInstruct = `# Usage \n ${str_usageInstruct} \n `
+  
+  const str_hr = '\n <hr>\n'
+  const str_writeToFile = str_projectTitle +str_licenseBadge+ str_desc +str_hr + str_tableContents + str_installation+str_usageInstruct+str_questions+str_gitHubLinks + str_license
   func_writeAnswersFile(str_writeToFile)
 
 }
