@@ -15,6 +15,7 @@ const hashArrHash_questions = [
     {"varName":"str_usageInstruct", "question":"Enter Usage Instructions? ","type": "input"},
     {"varName":"str_contributors", "question":"Enter names of Contributors? ","type": "input"},
     {"varName":"str_refrences", "question":"Enter names of 3rd party refrences? ","type": "input"},
+    {"varName":"str_tests", "question":"Enter a description of any test results? ","type": "input"},
     {"varName":"str_license", "question":"Enter a License ","type": "list", choices: ['Apache', 'BSD', 'GNU', 'MIT']},
 
 ];
@@ -97,6 +98,8 @@ const func_generateReadMe = ParamHash_answers => {
   * [Usage](#usage)
   * [Credits](#credits)
   * [Questions](#questions)
+  * [Test Results](#test)
+  * [Contributing](#contributing)
   * [License](#license) \n`
   
   let str_licenseBadge = ''
@@ -121,8 +124,9 @@ const func_generateReadMe = ParamHash_answers => {
       str_licenseBadge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)'
       break;
     }
+  const str_originalProjectTitle = ParamHash_answers.str_projectTitle
   str_licenseBadge += '\n'
-  str_license = `\n # License \n ${ParamHash_answers.str_projectTitle} is [${str_license}](${str_licenseUrl}) Licensed. \n`
+  str_license = `\n # License \n ${str_originalProjectTitle} is [${str_license}](${str_licenseUrl}) Licensed. \n`
 
   let str_installation = `# Installation \n ${ParamHash_answers.str_installInstruct} \n`
 
@@ -131,16 +135,22 @@ const func_generateReadMe = ParamHash_answers => {
   
   const str_gitHubLinks = `<ul><li><a href="https://github.com/${str_gitUserName}/${str_repoName}.git">Code on GitHub</a> </li>
   <li><a href="https://${str_gitUserName}.github.io/${str_repoName}/">Demo of Deployed Project</a></li>
-  <li>Clone the projecct here: git@github.com:${str_gitUserName}/${str_repoName}.git </li></ul> \n `
+  <li>Clone the projecct here: git@github.com:${str_gitUserName}/${str_repoName}.git </li></ul> \n \n`
 
   const str_email = ParamHash_answers.str_email
   const str_questions = `# Questions \n If you have questions please reach out to use at ${str_email} . \n `
 
   let str_usageInstruct = ParamHash_answers.str_usageInstruct
   str_usageInstruct = `# Usage \n ${str_usageInstruct} \n `
+  const str_credits = `# Credits \n ${ParamHash_answers.str_refrences} \n`
+
+  const str_tests = `\n# Test \n ${ParamHash_answers.str_tests} \n`
+  const str_contributeBadge = '[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) \n'
+  const str_contibuteCovenentUrl = 'https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg'
+  const str_contributing = `# Contributing \n ${str_originalProjectTitle} has adopted the [Contributor Covenant](${str_contibuteCovenentUrl}) code of conduct, for contributions. \n`
   
   const str_hr = '\n <hr>\n'
-  const str_writeToFile = str_projectTitle +str_licenseBadge+ str_desc +str_hr + str_tableContents + str_installation+str_usageInstruct+str_questions+str_gitHubLinks + str_license
+  const str_writeToFile = str_projectTitle +str_licenseBadge +str_contributeBadge+ str_desc +str_hr + str_tableContents + str_installation+str_usageInstruct+str_credits+str_questions+str_gitHubLinks + str_tests+str_contributing+str_license
   func_writeAnswersFile(str_writeToFile)
 
 }
