@@ -26,12 +26,11 @@
  * [inquirier](https://www.npmjs.com/package/inquirer)
 # Questions  
  <ul><li><a href="https://github.com/mogannam/readme-builder.git">Code on GitHub</a> </li>
-  <li><a href="https://mogannam.github.io/readme-builder/">Demo of Deployed Project</a></li>
   <li>Clone the projecct here: git@github.com:mogannam/readme-builder.git </li></ul> 
  
 
 # Test 
- * View the screenshots and videos below.
+ * View the videos below demoing the project.
   
 [movie.mp4](https://github.com/mogannam/readme-builder/raw/main/readMeBuilder.mp4)
 
