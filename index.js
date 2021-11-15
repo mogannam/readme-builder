@@ -4,7 +4,7 @@ const fs = require('fs');
 const str_outPath = "README.md";
 
 
-// TODO: Create an array of questions for user input
+// a array of question objects, used in an inquirer prompt
 const hashArrHash_questions = [
     {"varName": "str_gitUserName", "question":"Enter GitHub username? ","type": "input"},
     {"varName": "str_email", "question":"Enter email? ","type": "input"},
@@ -20,37 +20,38 @@ const hashArrHash_questions = [
 
 ];
 
-// TODO: Create a function to write README file
-const func_writeToFile = (str_fileName, str_data)=> {
-    return new Promise((resolve, reject) => {
-        fs.writeFile(str_outPath, str_data, err => {
-          if (err) {
-            reject(err);
-            return;
-          }
+// TODO: write a string to a file
+// const func_writeToFile = (str_fileName, str_data)=> {
+//     return new Promise((resolve, reject) => {
+//         fs.writeFile(str_outPath, str_data, err => {
+//           if (err) {
+//             reject(err);
+//             return;
+//           }
     
-          resolve({
-            ok: true,
-            message: 'File created!'
-          });
-        });
-      });
-}
+//           resolve({
+//             ok: true,
+//             message: 'File created!'
+//           });
+//         });
+//       });
+// }
 
-//helper function that takes a question as a string and a variable name to store the answer in
-// returns a hash of the question object, that gets passedd off to the inquire functions
+//helper function that takes a question as a string and a variable name to store the answer in.
+// It returns a hash of the question object, that gets passedd off to the inquire functions
 const func_newInquireQuestion = (paramHash_questionObject) => {
   const paramStr_answerVar = paramHash_questionObject.varName
   const paramStr_question = paramHash_questionObject.question
+  // get the typer of question we are asking. Its either an input or a list
   const paramStr_type = paramHash_questionObject.type
   if(paramStr_type === "list")
-    return {
+    return { // if a list format the question as a list
       type: 'list',
       name: paramStr_answerVar,
       message: paramStr_question, 
       choices: paramHash_questionObject.choices
     }
-  return {
+  return { // else its an input question
     type: 'input',
     name: paramStr_answerVar,
     message: paramStr_question 
@@ -59,6 +60,8 @@ const func_newInquireQuestion = (paramHash_questionObject) => {
   } // end return statement, return hash
 }// end func_newInquireQuestion
 
+// takes the array of question objects, and calls a helper function to fromat a list of questions
+// into a list of inquirer question objects
 const func_promptUser = () =>{
 
   //build an array of inquire hash objects, looping over each questions
@@ -67,8 +70,10 @@ const func_promptUser = () =>{
   // call the function func_newInquireQuestion
   // push the results of the function into a hash calledarrHashInquirer_questions
   hashArrHash_questions.forEach(questionElement => arrHashInquirer_questions.push(func_newInquireQuestion(questionElement)))
-  //console.log(arrHashInquirer_questions)
+  
   return inquirer.prompt(
+    // take a array of inquirer question objects and prompt the user for answers
+    // the answers are returned as a hash of variablenames pointing to the string answer.
     arrHashInquirer_questions
   );// end of return, inquire.prompt 
 } // end promptUser function
@@ -90,6 +95,9 @@ const func_writeAnswersFile = fileContent => {
   });
 };
 
+// takes a hash of answers
+// a variable string pointing to a string of answers
+// format the answers for the readme and then write it to the file.
 const func_generateReadMe = ParamHash_answers => {
   const str_projectTitle = `# ${ParamHash_answers.str_projectTitle} \n`
   const str_desc = `# Description \n\n ${ParamHash_answers.str_projectDescrip} \n`
@@ -105,7 +113,7 @@ const func_generateReadMe = ParamHash_answers => {
   let str_licenseBadge = ''
   let str_license = ParamHash_answers.str_license
   let str_licenseUrl = ''
-  //'Apache', 'BSD', 'GNU', 'MIT'
+  //choose from a list of license the correct one,'Apache', 'BSD', 'GNU', 'MIT'
   switch(str_license){
     case'Apache':
       str_licenseBadge = '[![License](https://img.shields.io/badge/License-Apache_2.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)'
@@ -150,14 +158,17 @@ const func_generateReadMe = ParamHash_answers => {
   const str_contributing = `# Contributing \n ${str_originalProjectTitle} has adopted the [Contributor Covenant](${str_contibuteCovenentUrl}) code of conduct, for contributions. \n`
   
   const str_hr = '\n <hr>\n'
+
+  // bundle up all the individual answers into one string, then write the string to a file
   const str_writeToFile = str_projectTitle +str_licenseBadge +str_contributeBadge+ str_desc +str_hr + str_tableContents + str_installation+str_usageInstruct+str_credits+str_questions+str_gitHubLinks + str_tests+str_contributing+str_license
   func_writeAnswersFile(str_writeToFile)
 
 }
 
-// TODO: Create a function to initialize app
+// A function to initialize app
 function func_init() {
-  func_promptUser()// call inquire function which passes a hash of answers into the next function
+  // prompt the user for questions
+  func_promptUser()// call inquire function which returns a hash of answers, the answers get passed into the next function
   .then((parm_answersPassedOff) => {func_generateReadMe(parm_answersPassedOff)})
 }
 

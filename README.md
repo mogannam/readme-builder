@@ -1,9 +1,9 @@
-# user project title 
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+# Readme Builder 
+[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
 # Description 
 
- user project description 
+ A Node.js project used to create readme files. 
 
  <hr>
 
@@ -17,22 +17,22 @@
   * [Contributing](#contributing)
   * [License](#license) 
 # Installation 
- user install instruct 
+ npm i 
 # Usage 
- user usage instructions 
+ node index.js 
  # Credits 
- some refrences 
+ Node.js and inquirier 
 # Questions 
- If you have questions please reach out to use at user@emal.com . 
- <ul><li><a href="https://github.com/username/user-test-repo.git">Code on GitHub</a> </li>
-  <li><a href="https://username.github.io/user-test-repo/">Demo of Deployed Project</a></li>
-  <li>Clone the projecct here: git@github.com:username/user-test-repo.git </li></ul> 
+ If you have questions please reach out to use at mogannam@email.com . 
+ <ul><li><a href="https://github.com/mogannam/readme-builder.git">Code on GitHub</a> </li>
+  <li><a href="https://mogannam.github.io/readme-builder/">Demo of Deployed Project</a></li>
+  <li>Clone the projecct here: git@github.com:mogannam/readme-builder.git </li></ul> 
  
 
 # Test 
- user test results 
+ View the screenshots and videos below. 
 # Contributing 
- user project title has adopted the [Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg) code of conduct, for contributions. 
+ Readme Builder has adopted the [Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg) code of conduct, for contributions. 
 
  # License 
- user project title is [GNU](https://www.gnu.org/licenses/gpl-3.0) Licensed. 
+ Readme Builder is [BSD](https://opensource.org/licenses/BSD-3-Clause) Licensed. 
