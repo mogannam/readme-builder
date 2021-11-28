@@ -146,7 +146,7 @@ const func_generateReadMe = ParamHash_answers => {
   <li>Clone the projecct here: git@github.com:${str_gitUserName}/${str_repoName}.git </li></ul> \n \n`
 
   const str_email = ParamHash_answers.str_email
-  const str_questions = `# Questions \n If you have questions please reach out to use at ${str_email} . \n `
+  const str_questions = `# Questions \n If you have questions please reach out to us at ${str_email} . \n `
 
   let str_usageInstruct = ParamHash_answers.str_usageInstruct
   str_usageInstruct = `# Usage \n ${str_usageInstruct} \n `

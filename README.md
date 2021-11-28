@@ -1,9 +1,9 @@
-# Readme Builder 
-[![License](https://img.shields.io/badge/License-BSD_3--Clause-blue.svg)](https://opensource.org/licenses/BSD-3-Clause)
+# express-note-keeper 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg)](code_of_conduct.md) 
 # Description 
 
- A Node.js project used to create readme files. 
+ A node.js express project deployed to heroku. The project is a note taking app with a web interfacee. 
 
  <hr>
 
@@ -17,29 +17,22 @@
   * [Contributing](#contributing)
   * [License](#license) 
 # Installation 
-  * Install Node.js first
-  * Then run npm i to install required packages
+ npm i  
 # Usage 
-  * To execute the program: node index.js 
+ node server.js 
  # Credits 
- * [Node.js](https://nodejs.org/en/)
- * [inquirier](https://www.npmjs.com/package/inquirer)
-# Questions  
- <ul><li><a href="https://github.com/mogannam/readme-builder.git">Code on GitHub</a> </li>
-  <li>Clone the projecct here: git@github.com:mogannam/readme-builder.git </li></ul> 
+ * Heroku * Node.js * Express * UUID  
+# Questions 
+ If you have questions please reach out to use at  . 
+ <ul><li><a href="https://github.com/mogannam/mogannam.git">Code on GitHub</a> </li>
+  <li><a href="https://mogannam.github.io/mogannam/">Demo of Deployed Project</a></li>
+  <li>Clone the projecct here: git@github.com:mogannam/mogannam.git </li></ul> 
  
 
 # Test 
- * View the videos below demoing the project.
   
-[movie.mp4](https://github.com/mogannam/readme-builder/raw/main/readMeBuilder.mp4)
-
- <video width="320" height="240" controls>
-  <source src="https://github.com/mogannam/readme-builder/raw/main/readMeBuilder.mp4" type="video/mp4">
- </video>
-
 # Contributing 
- * Readme Builder has adopted the [Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg) code of conduct, for contributions. 
+ express-note-keeper has adopted the [Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg) code of conduct, for contributions. 
 
  # License 
- * Readme Builder is [BSD](https://opensource.org/licenses/BSD-3-Clause) Licensed. 
+ express-note-keeper is [MIT](https://opensource.org/licenses/MIT) Licensed. 
