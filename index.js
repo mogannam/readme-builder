@@ -143,7 +143,7 @@ const func_generateReadMe = ParamHash_answers => {
   
   const str_gitHubLinks = `<ul><li><a href="https://github.com/${str_gitUserName}/${str_repoName}.git">Code on GitHub</a> </li>
   <li><a href="https://${str_gitUserName}.github.io/${str_repoName}/">Demo of Deployed Project</a></li>
-  <li>Clone the projecct here: git@github.com:${str_gitUserName}/${str_repoName}.git </li></ul> \n \n`
+  <li>Clone the project here: git@github.com:${str_gitUserName}/${str_repoName}.git </li></ul> \n \n`
 
   const str_email = ParamHash_answers.str_email
   const str_questions = `# Questions \n If you have questions please reach out to us at ${str_email} . \n `
